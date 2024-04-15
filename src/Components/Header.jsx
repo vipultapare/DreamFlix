@@ -1,4 +1,4 @@
-import logo from "./Utils/Images/logo.png";
+import logo from "../Utils/Images/logo.png";
 const Header = () => {
   return (
     <div className="bg-gradient-to-b from-blue-950 to-blue-900">
