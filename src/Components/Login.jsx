@@ -93,18 +93,18 @@ const Login = () => {
   return (
     <div className="overflow-auto">
       <Header />
-      <div className="absolute">
+      {/* <div className="absolute">
         <img
           src="https://img.freepik.com/free-photo/movie-background-collage_23-2149876023.jpg?size=626&ext=jpg&ga=GA1.1.710561948.1710229366&semt=ais"
           className="w-screen h-screen"
           alt=""
         />
-      </div>
+      </div> */}
 
       <form
         onSubmit={(e) => e.preventDefault()}
         action=""
-        className="absolute p-12 my-24 mx-auto right-0 left-0 text-slate-300 w-3/12  bg-black rounded-lg shadow-xl bg-opacity-80"
+        className="absolute p-12 my-16 mx-auto right-0 left-0 text-slate-300 w-3/12  bg-gradient-to-br from-blue-700 to-blue-950 border-slate-950 border-2 rounded-lg shadow-xl bg-opacity-80"
       >
         {isSignUpForm ? (
           <div>
