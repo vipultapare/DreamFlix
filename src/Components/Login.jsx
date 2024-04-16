@@ -2,13 +2,21 @@ import { useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../Utils/validate";
 import { useRef } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../Utils/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../Utils/userSlice";
 const Login = () => {
+  // For navigation into different pages we can use the useNavigate Hook provided by react router dom
+  const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
+
+  // dispatch
+  const dispatch = useDispatch();
 
   // Toggle  between Signup and Login Forms
 
@@ -34,6 +42,29 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
+          //update the profile
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: "https://example.com/jane-q-user/profile.jpg",
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                })
+              );
+              navigate("/Browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+              setErrorMessage(error.message);
+            });
         })
         .catch((error) => {
           setErrorMessage(error.message);
@@ -49,6 +80,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
+          navigate("/Browse");
           // ...
         })
         .catch((error) => {
