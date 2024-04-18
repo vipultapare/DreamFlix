@@ -5,9 +5,15 @@ import { auth } from "../Utils/firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { addUser, removeUser } from "../Utils/userSlice";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
+  // For dispatching an action from the store
+  const dispatch = useDispatch();
 
   const [isSignOut, isSetSignOut] = useState(false);
 
@@ -20,7 +26,6 @@ const Header = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        navigate("/");
         // Sign-out successful.
       })
       .catch((error) => {
@@ -31,6 +36,32 @@ const Header = () => {
   const openSignOut = () => {
     isSetSignOut(!isSignOut);
   };
+
+  // onAuthChange
+  // This code is for the dispatching an action for the App store to store and remove the information of user on every sign in , sign up , sign out in our store..
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const { uid, email, displayName } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+          })
+        );
+        navigate("/browse");
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+  }, []);
 
   return (
     <div className="flex justify-between bg-gradient-to-b from-blue-950 to-blue-900 bottom-2 border-b-violet-950">

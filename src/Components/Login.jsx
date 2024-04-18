@@ -58,7 +58,6 @@ const Login = () => {
                   displayName: displayName,
                 })
               );
-              navigate("/Browse");
             })
             .catch((error) => {
               // An error occurred
@@ -80,7 +79,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/Browse");
           // ...
         })
         .catch((error) => {
