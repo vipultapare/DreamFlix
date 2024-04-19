@@ -8,6 +8,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Utils/userSlice";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 const Login = () => {
   // For navigation into different pages we can use the useNavigate Hook provided by react router dom
   const navigate = useNavigate();
@@ -88,6 +90,31 @@ const Login = () => {
     }
   };
 
+  const provider = new GoogleAuthProvider();
+
+  const handleGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
+
   return (
     <div className="overflow-auto">
       <Header />
@@ -162,6 +189,14 @@ const Login = () => {
             {isSignUpForm ? "LOG IN" : "REGISTER"}
           </button>
         </p>
+
+        <p className="ml-32 pb-2">OR</p>
+        <button
+          className="p-2  bg-gradient-to-br from-cyan-600 to-blue-700 w-full rounded-xl text-black font-semibold hover:bg-gradient-to-l hover:from-lime-300 hover:to-lime-500"
+          onClick={handleGoogle}
+        >
+          SIGN IN WITH GOOGLE
+        </button>
       </form>
     </div>
   );
