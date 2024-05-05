@@ -129,21 +129,17 @@ const Login = () => {
       <form
         onSubmit={(e) => e.preventDefault()}
         action=""
-        className="absolute p-12 my-16 mx-auto right-0 left-0 text-slate-300 w-3/12  bg-gradient-to-br from-blue-700 to-blue-950 border-slate-950 border-2 rounded-lg shadow-xl bg-opacity-80"
+        className="absolute p-4 my-10 mx-auto right-0 left-0 text-slate-300 w-3/12  bg-gradient-to-br from-blue-700 to-blue-950 border-slate-950 border-2 rounded-lg shadow-xl bg-opacity-80 pb-2 for1111:mb-64 for700:w-1/2"
       >
         {isSignUpForm ? (
           <div>
-            <h1 className="text-white font-bold">Not Registered</h1>
-            <h2 className="text-white font-bold">
-              Then SIGN UP First to Start 😁
-            </h2>
+            {/* <h1 className="text-white font-bold">Not Registered</h1> */}
+            <h2 className="text-white font-bold text-center">SIGN UP</h2>
           </div>
         ) : (
           <div>
-            <h1 className="text-white font-bold">Already Registered</h1>
-            <h2 className="text-white font-bold">
-              Then Login First to Start 😁
-            </h2>
+            {/* <h1 className="text-white font-bold">Already Registered</h1> */}
+            <h2 className="text-white font-bold text-center">Login</h2>
           </div>
         )}
 
@@ -152,20 +148,20 @@ const Login = () => {
             ref={name}
             className="p-2 mt-2  w-full text-black font-bold rounded-lg bg-gray-400 bg-opacity-55 hover:bg-slate-400 hover:bg-opacity-35"
             type="text"
-            placeholder="Provide Your Good Name"
+            placeholder="Name"
           />
         )}
         <input
           ref={email}
           className="p-2 mt-2  w-full text-black font-bold rounded-lg  bg-gray-400 bg-opacity-55  hover:bg-slate-400 hover:bg-opacity-35"
           type="text"
-          placeholder="Your Email ID Please"
+          placeholder="Email ID"
         />
         <input
           ref={password}
           className="p-2 mt-2 w-full text-black font-bold rounded-lg  bg-gray-400 bg-opacity-55  hover:bg-slate-400 hover:bg-opacity-35"
           type="password"
-          placeholder="Enter your Secrete Password"
+          placeholder="Password"
         />
 
         <button
@@ -183,19 +179,19 @@ const Login = () => {
             : "Visiting First Time,then Register First"}
 
           <button
-            className="p-2 mt-2 my-6 w-full bg-gradient-to-r from-blue-500 to-blue-900 text-black font-bold rounded-lg hover:bg-gradient-to-l hover:from-lime-300 hover:to-lime-500"
+            className="p-2 mt-2 my-4 w-full bg-gradient-to-r from-blue-500 to-blue-900 text-black font-bold rounded-lg hover:bg-gradient-to-l hover:from-lime-300 hover:to-lime-500"
             onClick={setToggle}
           >
             {isSignUpForm ? "LOG IN" : "REGISTER"}
           </button>
         </p>
 
-        <p className="ml-32 pb-2">OR</p>
+        <p className=" pb-2 text-center">OR</p>
         <button
           className="p-2  bg-gradient-to-br from-cyan-600 to-blue-700 w-full rounded-xl text-black font-semibold hover:bg-gradient-to-l hover:from-lime-300 hover:to-lime-500"
           onClick={handleGoogle}
         >
-          SIGN IN WITH GOOGLE
+          GOOGLE
         </button>
       </form>
     </div>

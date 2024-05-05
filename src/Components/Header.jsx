@@ -64,12 +64,12 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="flex justify-between bg-gradient-to-b from-blue-950 to-blue-900 bottom-2 border-b-violet-950">
+    <div className="flex justify-between bg-gradient-to-b from-blue-950 to-blue-900 bottom-2 border-b-violet-950 w-full">
       <div className="">
-        <img src={logo} className="h-32" />
+        <img src={logo} className="h-32 xsm:h-20" />
       </div>
 
-      <div className="text-blue-600  uppercase font-light font-bold text-6xl mr-4 mt-5 p-2 cursor-default">
+      <div className="text-blue-600  uppercase font-light font-bold text-6xl mr-4 mt-5 p-2 cursor-default xsm:text-2xl">
         <h1>DreamFlix</h1>
       </div>
       {user && (
