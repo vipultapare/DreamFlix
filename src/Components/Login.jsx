@@ -116,7 +116,7 @@ const Login = () => {
   };
 
   return (
-    <div className="overflow-auto">
+    <div className="overflow-y-scroll">
       <Header />
       {/* <div className="absolute">
         <img

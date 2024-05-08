@@ -66,10 +66,10 @@ const Header = () => {
   return (
     <div className="flex justify-between bg-gradient-to-b from-blue-950 to-blue-900 bottom-2 border-b-violet-950 w-full">
       <div className="">
-        <img src={logo} className="h-32 xsm:h-20" />
+        <img src={logo} alt="img" className="h-32 xsm:h-20" />
       </div>
 
-      <div className="text-blue-600  uppercase font-light font-bold text-6xl mr-4 mt-5 p-2 cursor-default xsm:text-2xl">
+      <div className="text-blue-600  uppercase  font-bold text-6xl mr-4 mt-5 p-2 cursor-default xsm:text-2xl">
         <h1>DreamFlix</h1>
       </div>
       {user && (
@@ -78,10 +78,13 @@ const Header = () => {
             onClick={openSignOut}
             src={man}
             alt=""
-            className=" ml-8 h-16 w-16"
+            className="h-16 w-16 for600:h-10  for600:w-10  flex justify-center"
           />
-          <p className="text-white font-semibold justify-center cursor-pointer">
-            Welcome {user.displayName}
+          <p className="text-white font-semibold justify-center cursor-pointer for600:text-xs text-center">
+            Welcome
+          </p>
+          <p className="text-white font-semibold justify-center cursor-pointer for600:text-xs text-center">
+            {user.displayName}
           </p>
           {isSignOut && (
             <button

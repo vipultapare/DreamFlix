@@ -2,7 +2,7 @@ import React from "react";
 
 const VideoContainer = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="">
       <iframe
         className="w-screen aspect-video"
         src="https://www.youtube.com/embed/V-mugKDQDlg?si=c_BieEw6qRovklGq&autohide=1&mute=1&showinfo=0&controls=0&autoplay=1"
