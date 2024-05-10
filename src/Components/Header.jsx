@@ -9,8 +9,10 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../Utils/userSlice";
 import { useDispatch } from "react-redux";
+import { toggleGptSearchView } from "../Utils/gptSlice";
 
 const Header = () => {
+  const [isGptOn, setIsGptOn] = useState("off");
   const navigate = useNavigate();
   // For dispatching an action from the store
   const dispatch = useDispatch();
@@ -63,6 +65,11 @@ const Header = () => {
     });
   }, []);
 
+  const handleGptOption = () => {
+    setIsGptOn(isGptOn === "off" ? "on" : "off");
+    dispatch(toggleGptSearchView(isGptOn));
+  };
+
   return (
     <div className="flex justify-between bg-gradient-to-b from-blue-950 to-blue-900 bottom-2 border-b-violet-950 w-full">
       <div className="">
@@ -73,27 +80,37 @@ const Header = () => {
         <h1>DreamFlix</h1>
       </div>
       {user && (
-        <div className="mt-4 mb-4 mr-6 flex flex-col">
-          <img
-            onClick={openSignOut}
-            src={man}
-            alt=""
-            className="h-16 w-16 for600:h-10  for600:w-10  flex justify-center"
-          />
-          <p className="text-white font-semibold justify-center cursor-pointer for600:text-xs text-center">
-            Welcome
-          </p>
-          <p className="text-white font-semibold justify-center cursor-pointer for600:text-xs text-center">
-            {user.displayName}
-          </p>
-          {isSignOut && (
+        <div className="flex justify-between gap-6">
+          <div className="mt-9 pr-6 bg-gradient-to-br from-green-500 to-green-900 rounded-xl h-10 w-16  hover:bg-gradient-to-b hover:from-green-950 ">
             <button
-              className="text-white bg-gradient-to-br from-cyan-500 to-cyan-900 p-1 mt-2 rounded-lg font-semibold hover:bg-gradient-to-r hover:from bg-red-500  hover:to-red-900"
-              onClick={handleSignOut}
+              className=" pl-4 pt-2  text-white font-semibold "
+              onClick={handleGptOption}
             >
-              SIGN OUT
+              GPT
             </button>
-          )}
+          </div>
+          <div className="mt-4 mb-4 mr-6 flex flex-col">
+            <img
+              onClick={openSignOut}
+              src={man}
+              alt=""
+              className="h-16 w-16 for600:h-10  for600:w-10  flex justify-center"
+            />
+            <p className="text-white font-semibold justify-center cursor-pointer for600:text-xs text-center">
+              Welcome
+            </p>
+            <p className="text-white font-semibold justify-center cursor-pointer for600:text-xs text-center">
+              {user.displayName}
+            </p>
+            {isSignOut && (
+              <button
+                className="text-white bg-gradient-to-br from-cyan-500 to-cyan-900 p-1 mt-2 rounded-lg font-semibold hover:bg-gradient-to-r hover:from bg-red-500  hover:to-red-900"
+                onClick={handleSignOut}
+              >
+                SIGN OUT
+              </button>
+            )}
+          </div>
         </div>
       )}
     </div>
