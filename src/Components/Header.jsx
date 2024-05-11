@@ -12,12 +12,14 @@ import { useDispatch } from "react-redux";
 import { toggleGptSearchView } from "../Utils/gptSlice";
 
 const Header = () => {
-  const [isGptOn, setIsGptOn] = useState("off");
+  // const [isGptOn, setIsGptOn] = useState(false);
   const navigate = useNavigate();
   // For dispatching an action from the store
   const dispatch = useDispatch();
 
   const [isSignOut, isSetSignOut] = useState(false);
+
+  const isGPTOn = useSelector((store) => store?.gpt?.showGptSearch);
 
   //subscribe to the redux store
 
@@ -66,8 +68,8 @@ const Header = () => {
   }, []);
 
   const handleGptOption = () => {
-    setIsGptOn(isGptOn === "off" ? "on" : "off");
-    dispatch(toggleGptSearchView(isGptOn));
+    // setIsGptOn(!isGptOn);
+    dispatch(toggleGptSearchView());
   };
 
   return (
@@ -81,12 +83,12 @@ const Header = () => {
       </div>
       {user && (
         <div className="flex justify-between gap-6">
-          <div className="mt-9 pr-6 bg-gradient-to-br from-green-500 to-green-900 rounded-xl h-10 w-16  hover:bg-gradient-to-b hover:from-green-950 ">
+          <div className="mt-9 pr-6 bg-gradient-to-br from-green-500 to-green-900 rounded-xl h-10 w-18 hover:bg-gradient-to-b hover:from-green-950 ">
             <button
-              className=" pl-4 pt-2  text-white font-semibold "
+              className=" flex justify-center pt-2 ml-3  text-white font-semibold "
               onClick={handleGptOption}
             >
-              GPT
+              {isGPTOn ? "HOME" : "GPT"}
             </button>
           </div>
           <div className="mt-4 mb-4 mr-6 flex flex-col">

@@ -10,7 +10,7 @@ const Browse = () => {
   useFanMovies();
   useWeekTop10();
 
-  const showGptPage = (useSelector = (store) => store.gpt.showGptSearch);
+  const showGptPage = useSelector((store) => store?.gpt?.showGptSearch);
   return (
     <div className="overflow-y-scroll no-scrollbar">
       <Header />
