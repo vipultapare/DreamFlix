@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { options } from "../Utils/constant";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addWeekTop10 } from "../Utils/movieSlice";
 
 
 const useWeekTop10 = ()=>{
 
   const dispatch = useDispatch();
+  const week10 = useSelector(store => store?.movies?.weekTop10);
 
   const getWeekTop10 =async() =>{
 
@@ -23,7 +24,11 @@ const useWeekTop10 = ()=>{
   }
 
   useEffect(()=>{
-    getWeekTop10();
+    if(!week10)
+      {
+        getWeekTop10();
+      }
+  
   },[]);
   
 

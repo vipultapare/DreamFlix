@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { options } from "../Utils/constant";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addFanFavMovies } from "../Utils/movieSlice";
 
 const useFanMovies = ()=>{
   const dispatch = useDispatch();
+
+  const fanMovies = useSelector(store => store?.movies?.fanFavMovies);
   const getFanFavMovies = async() =>{
     
     const url = 'https://imdb188.p.rapidapi.com/api/v1/getFanFavorites?country=US';
@@ -19,7 +21,11 @@ const useFanMovies = ()=>{
   }
 
   useEffect(()=>{
-    getFanFavMovies();
+    if(!fanMovies)
+      {
+        getFanFavMovies();
+      }
+   
   },[]);
 
 

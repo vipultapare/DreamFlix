@@ -8,7 +8,7 @@ const SecondaryContainer = () => {
   console.log("Week Top Movies are");
   console.log(weekTop10);
   return (
-    <div className="bg-gradient-to-br from-black">
+    <div className="bg-gradient-to-br from-black mt-4 md:mt-0">
       <MovieList title={"Week Top 10"} movies={weekTop10} />
       <MovieList title={"Fan's Favourite"} movies={fanFavMovies} />
 

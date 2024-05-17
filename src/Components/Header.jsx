@@ -9,17 +9,17 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../Utils/userSlice";
 import { useDispatch } from "react-redux";
-import { toggleGptSearchView } from "../Utils/gptSlice";
+//import { toggleGptSearchView } from "../Utils/gptSlice";
 
 const Header = () => {
   // const [isGptOn, setIsGptOn] = useState(false);
   const navigate = useNavigate();
   // For dispatching an action from the store
   const dispatch = useDispatch();
-
+  //http://localhost:3000/Browse
   const [isSignOut, isSetSignOut] = useState(false);
 
-  const isGPTOn = useSelector((store) => store?.gpt?.showGptSearch);
+  //const isGPTOn = useSelector((store) => store?.gpt?.showGptSearch);
 
   //subscribe to the redux store
 
@@ -67,46 +67,46 @@ const Header = () => {
     });
   }, []);
 
-  const handleGptOption = () => {
-    // setIsGptOn(!isGptOn);
-    dispatch(toggleGptSearchView());
-  };
+  // const handleGptOption = () => {
+  //   // setIsGptOn(!isGptOn);
+  //   dispatch(toggleGptSearchView());
+  // };
 
   return (
-    <div className="flex justify-between bg-gradient-to-b from-blue-950 to-blue-900 bottom-2 border-b-violet-950 w-full">
-      <div className="">
-        <img src={logo} alt="img" className="h-32 xsm:h-20" />
+    <div className="flex  md:flex-row justify-between bg-gradient-to-b from-blue-950 to-blue-900 bottom-2 border-b-violet-950 w-full">
+      <div className="mx-auto md:mx-0">
+        <img src={logo} alt="img" className=" h-20 md:h-32" />
       </div>
 
-      <div className="text-blue-600  uppercase  font-bold text-6xl mr-4 mt-5 p-2 cursor-default xsm:text-2xl">
+      <div className="text-blue-600  uppercase  font-bold text-3xl md:text-6xl mr-4 mt-5 p-2 cursor-default mx-auto md:mx-0">
         <h1>DreamFlix</h1>
       </div>
       {user && (
-        <div className="flex justify-between gap-6">
-          <div className="mt-9 pr-6 bg-gradient-to-br from-green-500 to-green-900 rounded-xl h-10 w-18 hover:bg-gradient-to-b hover:from-green-950 ">
+        <div className="flex justify-between gap-6 mx-auto md:mx-0">
+          {/* <div className="mt-9 pr-6 bg-gradient-to-br from-green-500 to-green-900 rounded-xl h-10 w-18 hover:bg-gradient-to-b hover:from-green-950 ">
             <button
               className=" flex justify-center pt-2 ml-3  text-white font-semibold "
               onClick={handleGptOption}
             >
               {isGPTOn ? "HOME" : "GPT"}
             </button>
-          </div>
+          </div> */}
           <div className="mt-4 mb-4 mr-6 flex flex-col">
             <img
               onClick={openSignOut}
               src={man}
               alt=""
-              className="h-16 w-16 for600:h-10  for600:w-10  flex justify-center"
+              className=" h-10 md:h-16 w-10 md:w-16   flex justify-center"
             />
-            <p className="text-white font-semibold justify-center cursor-pointer for600:text-xs text-center">
+            <p className="text-white font-semibold justify-center cursor-pointer  text-center hidden md:inline-block">
               Welcome
             </p>
-            <p className="text-white font-semibold justify-center cursor-pointer for600:text-xs text-center">
+            <p className="text-white font-semibold justify-center cursor-pointer  text-center text-sm">
               {user.displayName}
             </p>
             {isSignOut && (
               <button
-                className="text-white bg-gradient-to-br from-cyan-500 to-cyan-900 p-1 mt-2 rounded-lg font-semibold hover:bg-gradient-to-r hover:from bg-red-500  hover:to-red-900"
+                className="text-white bg-gradient-to-br from-cyan-500 to-cyan-900 p-1 mt-2 rounded-lg font-semibold hover:bg-gradient-to-r hover:from bg-red-500  hover:to-red-900 text-sm"
                 onClick={handleSignOut}
               >
                 SIGN OUT

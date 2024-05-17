@@ -129,7 +129,7 @@ const Login = () => {
       <form
         onSubmit={(e) => e.preventDefault()}
         action=""
-        className="absolute p-4 my-10 mx-auto right-0 left-0 text-slate-300 w-3/12  bg-gradient-to-br from-blue-700 to-blue-950 border-slate-950 border-2 rounded-lg shadow-xl bg-opacity-80 pb-2 for1111:mb-64 for700:w-1/2"
+        className="absolute p-4 my-10 mx-auto right-0 left-0 text-slate-300 w-full md:w-3/12  bg-gradient-to-br from-blue-700 to-blue-950 border-slate-950 border-2 rounded-lg shadow-xl bg-opacity-80 pb-2 "
       >
         {isSignUpForm ? (
           <div>
