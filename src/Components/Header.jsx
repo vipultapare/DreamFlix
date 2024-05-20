@@ -9,19 +9,13 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../Utils/userSlice";
 import { useDispatch } from "react-redux";
-//import { toggleGptSearchView } from "../Utils/gptSlice";
 
 const Header = () => {
-  // const [isGptOn, setIsGptOn] = useState(false);
   const navigate = useNavigate();
-  // For dispatching an action from the store
+
   const dispatch = useDispatch();
-  //http://localhost:3000/Browse
+
   const [isSignOut, isSetSignOut] = useState(false);
-
-  //const isGPTOn = useSelector((store) => store?.gpt?.showGptSearch);
-
-  //subscribe to the redux store
 
   const user = useSelector((store) => store.user);
 

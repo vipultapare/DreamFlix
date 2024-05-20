@@ -1,5 +1,4 @@
 import React from "react";
-import VideoContainer from "./VideoContainer";
 
 const VideoText = ({ title, plot, rate }) => {
   return (

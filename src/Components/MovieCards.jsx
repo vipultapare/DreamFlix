@@ -8,9 +8,6 @@ const MovieCards = ({ title, url }) => {
         src={url}
         alt={title}
       />
-      {/* <h4 className="font-semibold text-cyan-500 flex justify-center">
-        {title}
-      </h4> */}
     </div>
   );
 };

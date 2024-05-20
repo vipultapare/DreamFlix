@@ -13,7 +13,7 @@ const useFanMovies = ()=>{
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-      //console.log(result.data.list);
+     
       dispatch(addFanFavMovies(result.data.list));
     } catch (error) {
       console.error(error);

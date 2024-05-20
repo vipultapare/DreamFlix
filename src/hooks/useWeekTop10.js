@@ -15,7 +15,7 @@ const useWeekTop10 = ()=>{
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    console.log(result.data);
+   
     dispatch(addWeekTop10(result.data));
   } catch (error) {
     console.error(error);

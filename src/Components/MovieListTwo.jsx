@@ -1,6 +1,7 @@
 import React from "react";
 import MovieCards from "./MovieCards";
-const MovieList = ({ title, movies }) => {
+
+const MovieListTwo = ({ title, movies }) => {
   return (
     movies && (
       <div className="pt-6">
@@ -12,9 +13,9 @@ const MovieList = ({ title, movies }) => {
           <div className="flex">
             {movies.map((movies) => (
               <MovieCards
-                key={movies?.id}
-                title={movies?.originalTitleText?.text}
-                url={movies?.primaryImage?.imageUrl}
+                key={movies?.title?.id}
+                title={movies?.title?.originalTitleText?.text}
+                url={movies?.title?.primaryImage?.imageUrl}
               />
             ))}
           </div>
@@ -24,4 +25,4 @@ const MovieList = ({ title, movies }) => {
   );
 };
 
-export default MovieList;
+export default MovieListTwo;
