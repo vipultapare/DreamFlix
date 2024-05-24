@@ -9,6 +9,7 @@ const movieSlice = createSlice(
       weekTop10:null,
       
       weekStream:null,
+      searchMovie:null,
       
     },
     reducers:{
@@ -21,11 +22,15 @@ const movieSlice = createSlice(
       addWeekStream:(state,action) =>{
         state.weekStream = action.payload;
       },
+      addSearchMovie:(state,action) =>{
+        state.searchMovie = action.payload;
+      },
+      
       
     }
 
   }
 );
 
-export const {addFanFavMovies,addWeekTop10, addWeekStream} = movieSlice.actions;
+export const {addFanFavMovies,addWeekTop10, addWeekStream, addSearchMovie} = movieSlice.actions;
 export default movieSlice.reducer;

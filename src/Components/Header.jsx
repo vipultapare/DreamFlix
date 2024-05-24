@@ -77,14 +77,6 @@ const Header = () => {
       </div>
       {user && (
         <div className="flex justify-between gap-6 mx-auto md:mx-0">
-          {/* <div className="mt-9 pr-6 bg-gradient-to-br from-green-500 to-green-900 rounded-xl h-10 w-18 hover:bg-gradient-to-b hover:from-green-950 ">
-            <button
-              className=" flex justify-center pt-2 ml-3  text-white font-semibold "
-              onClick={handleGptOption}
-            >
-              {isGPTOn ? "HOME" : "GPT"}
-            </button>
-          </div> */}
           <div className="mt-4 mb-4 mr-6 flex flex-col">
             <img
               onClick={openSignOut}
