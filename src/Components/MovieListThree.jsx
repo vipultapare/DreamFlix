@@ -1,11 +1,14 @@
-import React from "react";
 import MovieCards from "./MovieCards";
+import { deleteSearchMovie } from "../Utils/movieSlice";
 import { useDispatch } from "react-redux";
+import { removeSearchContent } from "../Utils/searchContentSlice";
 
 const MovieListThree = ({ title, movies }) => {
-  const dispatch = useDispatch();
+  const disPatch = useDispatch();
+
   const handleHome = () => {
-    dispatch();
+    disPatch(deleteSearchMovie());
+    disPatch(removeSearchContent());
   };
   return (
     movies && (

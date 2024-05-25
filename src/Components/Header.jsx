@@ -61,11 +61,6 @@ const Header = () => {
     });
   }, []);
 
-  // const handleGptOption = () => {
-  //   // setIsGptOn(!isGptOn);
-  //   dispatch(toggleGptSearchView());
-  // };
-
   return (
     <div className="flex  md:flex-row justify-between bg-gradient-to-b from-blue-950 to-blue-900 bottom-2 border-b-violet-950 w-full">
       <div className="mx-auto md:mx-0">

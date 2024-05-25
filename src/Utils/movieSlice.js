@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
+
 const movieSlice = createSlice(
   {
     name:"movies",
     initialState: {
       fanFavMovies:null,
       weekTop10:null,
-      
-      weekStream:null,
       searchMovie:null,
+      weekStream:null,
       
     },
     reducers:{
@@ -22,9 +22,14 @@ const movieSlice = createSlice(
       addWeekStream:(state,action) =>{
         state.weekStream = action.payload;
       },
-      addSearchMovie:(state,action) =>{
+      addSearchMovie:(state,action)=>{
         state.searchMovie = action.payload;
       },
+      deleteSearchMovie:(state,action) =>{
+        state.searchMovie = null;
+      },
+     
+     
       
       
     }
@@ -32,5 +37,5 @@ const movieSlice = createSlice(
   }
 );
 
-export const {addFanFavMovies,addWeekTop10, addWeekStream, addSearchMovie} = movieSlice.actions;
+export const {addFanFavMovies,addWeekTop10, addWeekStream,addSearchMovie ,deleteSearchMovie} = movieSlice.actions;
 export default movieSlice.reducer;

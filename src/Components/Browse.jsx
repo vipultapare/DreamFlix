@@ -8,16 +8,14 @@ import useWeekStream from "../hooks/useWeekStream";
 import Search from "./Search";
 import { useSelector } from "react-redux";
 import SearchContainer from "./SearchContainer";
-import useSearchMovies from "../hooks/useSearchMovies";
 
 const Browse = () => {
   useFanMovies();
   useWeekTop10();
 
   useWeekStream();
-  const searchMovies = useSelector((store) => store.movie.searchMovie);
+  const searchMovies = useSelector((store) => store?.movie?.searchMovie);
 
-  console.log(searchMovies);
   return (
     <div className="overflow-y-scroll no-scrollbar">
       <Header />

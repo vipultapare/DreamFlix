@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addSearchMovie } from "../Utils/movieSlice";
 
 
+
+
+
 const useSearchMovies = () => {
 
   const dispatch = useDispatch();
-  const getSearchMovies = useSelector(store => store?.movies?.searchMovies);
+  const getSearchMovies = useSelector(store => store?.movie?.searchMovie);
 
   const data = useSelector((store) => store.searchContent);
   
@@ -20,8 +23,8 @@ const useSearchMovies = () => {
           const response = await fetch(url, options);
           const result = await response.json();
           
-         //console.log(result);
-          dispatch(addSearchMovie(result.data));
+        
+        dispatch(addSearchMovie(result.data));
         } catch (error) {
           console.error(error);
         }
